@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <link rel = "stylesheet" href = "../static/css/index.css">
+    <link rel = "stylesheet" href = "../static/css/playlist.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+
+        {% if loggedinuser %}
+        var user = {{ loggedinuserid|tojson }}
+        var favoritePlaylists = {{ favorite_playlists|tojson }}
+        {% endif %}
+        var playlist = {{ playlist_dict|tojson }}
+
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class = "main_content">
+
+    <div class = "menu">
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <a href = "/">
+                    <img class = "menu_item_img" src = "../static/images/home-line-icon.png">
+                </a>
+            </div>
+            <div class = "menu_item_name">
+                <a href = "/">
+                    Home
+                </a>
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/search-icon.png">
+            </div>
+            <div class = "menu_item_name">
+                Search
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/book-icon.jpg">
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Your library
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/library">
+                        Your library
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                Create playlist
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Liked songs
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/likes">
+                        Liked songs
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item playlist">
+            My playlist
+        </div>
+    </div>
+
+    <div class = "playlist_wrapper">
+
+        <div id = "playlist_header">
+            {{ playlist }}
+        </div>
+
+        {% if not loggedinuser %}
+            <div class = "playlist_login_to_add">
+                Login to like
+            </div>
+        {% else %}
+        <div class = "playlist_add_favorite">
+            <div class = "heart_wrapper">
+                <div class = "heart">
+
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div id = "playlist">
+            {% for track in playlist.tracklist %}
+                <div class = "playlist_track">
+                    <audio src = "{{ track.preview }}" controls></audio>
+                    <img class = "playlist_track_img" src = "{{ track.cover }}">
+                    <a href = "../artist/{{ track.artist_id }}">
+                        <div class = "playlist_artist">
+                            {{ track.artist_name }}
+                        </div>
+                    </a>
+                    <div class = "playlist_track_name">
+                        {{ track.title }}
+                    </div>
+                    {% if not loggedinuser %}
+                        <div class = "track_login_to_add">
+                            Login to like
+                        </div>
+                    {% else %}
+                        <div class = "track_add_favorite">
+                            <div class = "heart_wrapper">
+                                <div class = "heart">
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class = "track_duration">
+                        {{ track.duration }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <script src = "../static/js/playlist.js"></script>
+
+{% endblock %}

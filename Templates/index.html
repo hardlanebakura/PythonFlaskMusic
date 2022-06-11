@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <link rel = "stylesheet" href = "../static/css/index.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class = "main_content">
+
+    <div class = "menu">
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <a href = "/">
+                    <img class = "menu_item_img" src = "../static/images/home-line-icon.png">
+                </a>
+            </div>
+            <div class = "menu_item_name">
+                <a href = "/">
+                    Home
+                </a>
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/search-icon.png">
+            </div>
+            <div class = "menu_item_name">
+                Search
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/book-icon.jpg">
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Your library
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/library">
+                        Your library
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                Create playlist
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Liked songs
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/likes">
+                        Liked songs
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item playlist">
+            My playlist
+        </div>
+    </div>
+
+    <div class = "main">
+        1
+        <audio src="https://archive.org/download/ReclaimHtml5/ReclaimHtml5.mp3" type="audio/mpeg" controls>
+    </div>
+
+    </div>
+
+
+    <script src = "../static/js/index.js"></script>
+
+{% endblock %}

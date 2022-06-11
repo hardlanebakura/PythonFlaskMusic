@@ -1,0 +1,68 @@
+{
+  "artists": [
+    {
+      "name": "The Clash",
+      "id": "2"
+    },
+    {
+      "name": "The Rolling Stones",
+      "id": "11"
+    },
+    {
+      "name": "Bob Dylan",
+      "id": "808"
+    },
+    {
+      "name": "Grateful Dead",
+      "id": "1785"
+    },
+    {
+      "name": "The Cure",
+      "id": "381"
+    },
+    {
+      "name": "The Smiths",
+      "id": "1297"
+    },
+    {
+      "name": "Neil Young",
+      "id": "1379"
+    },
+    {
+      "name": "David Bowie",
+      "id": "997"
+    },
+    {
+      "name": "Elvis Presley",
+      "id": "1125"
+    },
+    {
+      "name": "Roy Orbison",
+      "id": "1892"
+    },
+    {
+      "name": "Rod Stewart",
+      "id": "1440"
+    },
+    {
+      "name": "Aerosmith",
+      "id": "1005"
+    },
+    {
+      "name": "Franco Battiato",
+      "id": "2850"
+    },
+    {
+      "name": "Eric Clapton",
+      "id": "192"
+    },
+    {
+      "name": "Kiss",
+      "id": "67"
+    },
+    {
+      "name": "The Doors",
+      "id": "847"
+    }
+  ]
+}

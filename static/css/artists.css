@@ -1,0 +1,25 @@
+.artists_row {
+
+    display:flex;
+
+}
+
+.artist {
+
+    margin-inline:19px;
+
+}
+
+.artist_img {
+
+    height:180px;
+    width:180px;
+
+}
+
+.artist_name {
+
+    padding:10px;
+    text-align:center;
+
+}

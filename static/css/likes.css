@@ -1,0 +1,140 @@
+.liked_songs_header {
+
+    height:270px;
+    width:100%;
+    background:linear-gradient(#C68FF0, #260D38);
+    display:flex;
+    align-items:center;
+
+}
+
+.liked_songs_name {
+
+    margin-left:40px;
+    color:#fff;
+    font-weight:bold;
+
+}
+
+.liked_songs_playlist_name {
+
+    font-size:small;
+
+}
+
+.main {
+
+    width:69%;
+
+}
+
+.liked_songs_like_name {
+
+    font-size:42px;
+
+}
+
+.liked_songs_user_name {
+
+
+
+}
+
+.liked_songs_img {
+
+    margin-left:40px;
+    height:212px;
+    width:212px;
+
+}
+
+.liked_songs {
+
+
+
+}
+
+.main {
+
+    display:block;
+
+}
+
+.liked_songs_title_row {
+
+    margin:14px 0;
+    display:flex;
+
+}
+
+.track_row {
+
+    display:flex;
+
+}
+
+.track_title {
+
+    min-width: 40%;
+    margin: 7px 0 0 14px;
+
+}
+
+.track_duration {
+
+    margin:7px 0 0 14px;
+
+}
+
+.track_add_favorite {
+
+    margin: 7px 0 0 14px;
+
+}
+
+.track_img {
+
+    height:40px;
+    width:40px;
+
+}
+
+.track_name {
+
+    width:274px;
+    margin-left:19px;
+    font-weight:bold;
+
+}
+
+.track_artist {
+
+    margin-left:19px;
+
+}
+
+.liked_songs_title_row_song_number {
+
+    margin-left:4px;
+
+}
+
+.liked_songs_title_row_name {
+
+    margin-left: 71px;
+
+}
+
+.track_index {
+
+    margin-right: 11px;
+    padding: 7px;
+
+}
+
+
+
+
+
+
+

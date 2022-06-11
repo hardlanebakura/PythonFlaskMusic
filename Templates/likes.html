@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/index.css') }}">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/likes.css') }}">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+
+        var user = {{ loggedinuserid }}
+        var liked_songs = {{ liked_songs_dict|tojson }}
+
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class = "main_content">
+
+    <div class = "menu">
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <a href = "/">
+                    <img class = "menu_item_img" src = "{{ url_for('static', filename = '/images/home-line-icon.png') }}">
+                </a>
+            </div>
+            <div class = "menu_item_name">
+                <a href = "/">
+                    Home
+                </a>
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "{{ url_for('static', filename = '/images/search-icon.png') }}">
+            </div>
+            <div class = "menu_item_name">
+                Search
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "{{ url_for('static', filename = '/images/book-icon.jpg') }}">
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Your library
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/library">
+                        Your library
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                Create playlist
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Liked songs
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/likes">
+                        Liked songs
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item playlist">
+            My playlist
+        </div>
+    </div>
+
+    <div class = "main">
+        <div class = "liked_songs_header">
+            <img class = "liked_songs_img" src = "{{ url_for('static', filename = '/images/liked-songs.png') }}">
+            <div class = "liked_songs_name">
+                <div class = "liked_songs_playlist_name">
+                    PLAYLIST
+                </div>
+                <div class = "liked_songs_like_name">
+                   Liked Songs
+                </div>
+                <div class = "liked_songs_user_name">
+                    {{ loggedinuser }} {{ liked_songs|length }} songs
+                </div>
+            </div>
+        </div>
+        <div class = "liked_songs">
+            <div class = "liked_songs_title_row">
+                <div class = "liked_songs_title_row_song_number">
+                    #
+                </div>
+                <div class = "liked_songs_title_row_name">
+                    TITLE
+                </div>
+            </div>
+            {% for track in liked_songs %}
+                <div class = "track_row">
+                    <div class = "track_index">
+                        {{ loop.index }}
+                    </div>
+                    <img class = "track_img" src = "{{ track.cover }}">
+                    <div class = "track_artist_name">
+                        <div class = "track_name">
+                            {{ track }}
+                        </div>
+                        <div class = "track_artist">
+                            {{ track.artist_name }}
+                        </div>
+                    </div>
+                    <audio src = "{{ track.preview }}" controls></audio>
+                    <div class = "track_title">
+                        {{ track.title }}
+                    </div>
+                    <div class = "track_add_favorite">
+                        <div class = "heart_wrapper">
+                            <div class = "heart">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "track_duration">
+                        {{ track.duration }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    </div>
+
+
+    <script src = "{{ url_for('static', filename = '/js/index.js') }}"></script>
+    <script src = "{{ url_for('static', filename = '/js/likes.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,165 @@
+#artist_header {
+
+    display:flex;
+
+}
+
+#artist_img {
+
+
+    height:240px;
+    width:400px;
+
+}
+
+#artist_overview {
+
+    width:40%;
+    padding-top:4%;
+    text-align:center;
+
+}
+
+#artist_name {
+
+    margin-bottom:4%;
+
+}
+
+#artist_albums_title {
+
+    display:flex;
+    padding:14px;
+
+}
+
+#artist_albums_title_all {
+
+    margin-left:auto;
+    padding-top:7px;
+
+}
+
+.artist_album_img {
+
+    height:194px;
+    width:194px;
+    border-radius: 7px;
+
+}
+
+.artist_popular {
+
+    margin-bottom:10px;
+    display:flex;
+
+}
+
+.artist_popular_img {
+
+    height:40px;
+    width:40px;
+
+}
+
+.artist_popular_title {
+
+    min-width: 40%;
+    margin: 7px 0 0 14px;
+
+}
+
+.artist_popular_duration {
+
+    margin:7px 0 0 14px;
+
+}
+
+.artist_albums_row {
+
+    text-align:center;
+    display:flex;
+
+}
+
+.artist_album_name {
+
+    width:194px;,
+
+}
+
+#artist_playlists {
+
+    margin-bottom:74px;
+
+}
+
+.artist_playlist_row {
+
+    text-align:center;
+    display:flex;
+
+}
+
+#artist_playlists_title {
+
+    display:flex;
+    padding:14px;
+
+}
+
+#artist_playlists_title_all {
+
+    margin-left: auto;
+    padding-top: 7px;
+
+}
+
+.artist_popular_login_to_add {
+
+    margin: 7px 0 0 14px;
+
+}
+
+.artist_popular_add_favorite {
+
+    margin: 7px 0 0 14px;
+
+}
+
+.artist_album {
+
+    border-radius:7px;
+
+}
+
+.album_wrapper {
+
+    padding: 14px;
+
+}
+
+#artist_album_all {
+
+    cursor:pointer;
+
+}
+
+#artist_playlist_all {
+
+    cursor:pointer;
+
+}
+
+#artist_album_hide_all {
+
+    display:none;
+
+}
+
+#artist_playlist_hide_all {
+
+    display:none;
+
+}
+

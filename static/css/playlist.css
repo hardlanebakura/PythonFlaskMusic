@@ -1,0 +1,45 @@
+.playlist_track {
+
+    margin-bottom:14px;
+    display:flex;
+
+}
+
+.playlist_track_img {
+
+    height:40px;
+    width:40px;
+
+}
+
+.playlist_track_name {
+
+    min-width: 40%;
+    margin: 7px 0 0 14px;
+
+}
+
+.track_duration {
+
+    margin:7px 0 0 14px;
+
+}
+
+.playlist_artist {
+
+    width:170px;
+    margin: 7px 0 0 14px;
+
+}
+
+.playlist_add_favorite {
+
+    width:40px;
+    margin:22px;
+
+}
+
+
+
+
+

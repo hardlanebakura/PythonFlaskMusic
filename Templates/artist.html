@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <link rel = "stylesheet" href = "../static/css/index.css">
+    <link rel = "stylesheet" href = "../static/css/artist.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+
+        var artist_dict = {{ artist_dict|tojson }}
+
+        {% if loggedinuserid %}
+            var user = {{ loggedinuserid|tojson }}
+            var favoriteTracks = {{ favorite_tracks|tojson }}
+        {% endif %}
+
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class = "main_content">
+
+    <div class = "menu">
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/home-line-icon.png">
+            </div>
+            <div class = "menu_item_name">
+                Home
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/search-icon.png">
+            </div>
+            <div class = "menu_item_name">
+                Search
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+                <img class = "menu_item_img" src = "../static/images/book-icon.jpg">
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Your library
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/library">
+                        Your library
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                Create playlist
+            </div>
+        </div>
+        <div class = "menu_item">
+            <div class = "menu_item_icon">
+
+            </div>
+            <div class = "menu_item_name">
+                {% if not loggedinuser %}
+                    <a href = "/login">
+                        Liked songs
+                    </a>
+                {% else %}
+                    <a href = "/users/{{ loggedinuserid }}/likes">
+                        Liked songs
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class = "menu_item playlist">
+            My playlist
+        </div>
+    </div>
+
+    <div id = "artist">
+        <div id = "artist_header">
+            <div id = "artist_overview">
+                <div id = "artist_name">
+                    {{ artist }}
+                    {{ loggedinuserid }}
+                </div>
+                <div id = "artist_fans">
+                    {{ artist.fans }} fans
+                </div>
+            </div>
+            <div id = "artist_image">
+                <img id = "artist_img" src = "{{ artist.picture }}">
+            </div>
+        </div>
+        <div id = "artist_popular">
+            <h3 class = "header">Popular</h3>
+            {% for track in artist.tracks_top %}
+                <div class = "artist_popular">
+                    <audio src = "{{ track.preview }}" controls></audio>
+                    <a href = "/albums/{{ track.album_id }}?artist={{ artist.id }}">
+                    <img class = "artist_popular_img" src = "{{ track.cover }}">
+                    </a>
+                    <div class = "artist_popular_title">
+                        {{ track.title }}
+                    </div>
+                    {% if not loggedinuser %}
+                        <div class = "artist_popular_login_to_add">
+                            Login to like
+                        </div>
+                    {% else %}
+                        <div class = "artist_popular_add_favorite">
+                            <div class = "heart_wrapper">
+                                <div class = "heart">
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class = "artist_popular_duration">
+                        {{ track.duration }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div id = "artist_albums">
+            <div id = "artist_albums_title">
+                <h3 class = "header">Albums</h3>
+                {% if (artist.albums)|length > 6 %}
+                    <div id = "artist_albums_title_all">
+                        <h4 id = "artist_album_all">SEE ALL</h4>
+                        <h4 id = "artist_album_hide_all">SEE LESS</h4>
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "artist_albums_row">
+                {% for i in range(6) %}
+                    <a href = "/albums/{{ artist.albums[i].id }}?artist={{ artist.id }}">
+                        <div class = "album_wrapper">
+                            <div class = "artist_album">
+                                <img class = "artist_album_img" src = "{{ artist.albums[i].cover }}">
+                                <div class = "artist_album_name">
+                                    {{ artist.albums[i].title }}
+                                </div>
+                                <div class = "artist_album_year">
+                                    {{ artist.albums[i].release_date.split("-")[0] }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div id = "artist_playlists">
+            <div id = "artist_playlists_title">
+                <h3 class = "header">Playlists</h3>
+                {% if (artist.playlists)|length > 6 %}
+                    <div id = "artist_playlists_title_all">
+                        <h4 id = "artist_playlist_all">SEE ALL</h4>
+                        <h4 id = "artist_playlist_hide_all">SEE LESS</h4>
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "artist_playlist_row">
+                {% for i in range(6) %}
+                    <a href = "/playlists/{{ artist.playlists[i].id }}">
+                        <div class = "album_wrapper">
+                            <div class = "artist_playlist">
+                                <img class = "artist_album_img" src = "{{ artist.playlists[i].cover }}">
+                                <div class = "artist_album_name">
+                                    {{ artist.playlists[i] }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+    <script src = "../static/js/artist.js"></script>
+
+{% endblock %}

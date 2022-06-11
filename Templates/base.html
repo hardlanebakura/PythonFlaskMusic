@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/base.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap" rel="stylesheet">
+    <link rel="logoicon.png" sizes="76x76" href="{{ url_for('static', filename = '/images/logoicon.png') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename = '/images/logoicon.png') }}" type="image/x-icon" />
+    <script src = "{{ url_for('static', filename = '/js/base.js') }}"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+
+        <div class = "header_menu">
+            <div class = "header_menu_item">
+                <a class = "header_link" href = "/artists">Artists</a>
+            </div>
+                {% if not loggedinuser %}
+                    <div class = "header_menu_login">
+                        <a class = "header_link" href = "/login">
+                            LOGIN
+                        </a>
+                    </div>
+                {% else %}
+                    <div class = "header_menu_user">
+                        <div class = "header_username">
+                            <img class = "header_menu_img" src = "{{ url_for('static', filename = '/images/user-icon.png') }}">
+                            {{ loggedinuser }}
+                        </div>
+                    </div>
+                    <div class = "header_menu_logout">
+                        <a class = "header_link" href = "/logout">Logout</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% block body %}
+    {% endblock %}
+
+    <script src = "{{ url_for('static', filename = '/js/base.js') }}"></script>
+</body>
+</html>
