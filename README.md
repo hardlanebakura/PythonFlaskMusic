@@ -1,6 +1,15 @@
-This project is a website for music. (similar to Spotify).
+# A website for music. (similar to Spotify).
 
-It communicates with Deezer API and uses the SQL and MongoDB databases, with the OOP and ORM concepts. For frontend it uses JQuery.
+It uses:
+    <ul>
+        <li>Deezer API</li>
+        <li>SQL</li>
+        <li>MongoDB</li>
+        <li>OOP/ORM concepts</li>
+        <li>JQuery</li>
+    </ul>
+
+# Happy browsing!
 
 
 
